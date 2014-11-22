@@ -20,6 +20,9 @@ hold all
 
 for i = 1:n
 	l = norm (r);
+	if (norm(r) <= E)
+	break;
+	end
 	a = -G*m/(l^2)*r/l;
 	v = v+a*dt;
 	r = r+v*dt;
