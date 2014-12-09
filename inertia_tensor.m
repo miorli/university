@@ -28,7 +28,7 @@ function T = inertia(i,j)
 	T=0;
 	
 	for k = 1:rows(r)
-		T = T + m(1)*(norm(r(1,:))^2*kronDel(i,j)-r(k,i)*r(k,j));
+		T = T + m(k)*(norm(r(k,:))^2*kronDel(i,j)-r(k,i)*r(k,j));
 	endfor
 endfunction
 
