@@ -1,12 +1,12 @@
 clear;
 
-global r = [1,0,1,;-1,0,-1;-1/2,0,1/2;1/2,0,-1/2]               %rows of matrix are coordinates of each individual mass point
+global r = [1,0,1,;-1,0,-1;-1/2,0,1/2;1/2,0,-1/2]               %rows of matrix are coordinates of each individual point mass
 
-global m = [1,1,1,1]	                                        %masses of each individual mass point
+global m = [1,1,1,1]	                                        %entries are masses of each individual point mass
 
 if rows(r) != columns(m)
 	disp("WARRNING!")
-	disp("Number of coordinates must match number of mass points")
+	disp("Number of coordinates must match number of point masses")
 	break;
 endif
 
@@ -32,9 +32,9 @@ function T = inertia(i,j)
 	endfor
 endfunction
 
-I = [inertia(1,1), inertia(1,2), inertia(1,3); inertia(2,1), inertia(2,2), inertia(2,3); inertia(3,1), inertia(3,2), inertia(3,3) ];
+I = [inertia(1,1), inertia(1,2), inertia(1,3); inertia(2,1), inertia(2,2), inertia(2,3); inertia(3,1), inertia(3,2), inertia(3,3) ]
 
-disp("eigenvector")
+disp("eigenvectors")
 [v, lambda] = eig (I)
 
 hold all;
@@ -45,7 +45,5 @@ for k = 1:3
 endfor
 
 for k = 1:rows(r)
-	global r
-	global m
-	plot3(r(k,1), r(k,2), r(k,3),'.','MarkerSize',m(k)*10)      %marker sizes represent mass of mass points
+	plot3(r(k,1), r(k,2), r(k,3),'.','MarkerSize',m(k)*10)      %marker sizes represent mass of point masses
 endfor
